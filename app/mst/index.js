@@ -7,11 +7,13 @@ const Todo = types
     completed: types.boolean,
   })
   .actions(self => {
-    function setTitle(newTitle) {
-      self.title = newTitle;
-    }
     return {
-      setTitle,
+      setTitle(newTitle) {
+        self.title = newTitle;
+      },
+      setCompleted() {
+        self.completed = true;
+      },
     };
   });
 

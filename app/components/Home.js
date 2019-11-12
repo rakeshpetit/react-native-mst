@@ -10,6 +10,10 @@ export class Home extends Component {
       store.addTodo('Nice 2');
       store.addTodo('Nice 3');
     }, 2000);
+    setTimeout(() => {
+      store.todos[0].setTitle('Nice 0');
+      store.todos[0].setCompleted();
+    }, 5000);
   }
 
   render() {
@@ -20,7 +24,10 @@ export class Home extends Component {
       <View>
         <Text>This is Home</Text>
         {store.todos.map(todo => (
-          <Text>{todo.title}</Text>
+          <View style={{justifyContent: 'space-around', flexDirection: 'row'}}>
+            <Text>{todo.title}</Text>
+            <Text>{todo.completed ? 'Done' : 'Incomplete'}</Text>
+          </View>
         ))}
       </View>
     );
