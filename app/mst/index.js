@@ -1,5 +1,4 @@
 import {types} from 'mobx-state-tree';
-import {observable} from 'mobx-react';
 
 const Todo = types
   .model('Todo', {
@@ -25,6 +24,9 @@ const TodoStore = types
     return {
       get completedTodos() {
         return self.todos.filter(t => t.completed);
+      },
+      get incompleteTodos() {
+        return self.todos.filter(t => !t.completed);
       },
     };
   })

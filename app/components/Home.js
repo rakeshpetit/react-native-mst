@@ -23,8 +23,19 @@ export class Home extends Component {
     return (
       <View>
         <Text>This is Home</Text>
-        {store.todos.map(todo => (
-          <View style={{justifyContent: 'space-around', flexDirection: 'row'}}>
+        {store.incompleteTodos.map((todo, index) => (
+          <View
+            key={index}
+            style={{justifyContent: 'space-around', flexDirection: 'row'}}>
+            <Text>{todo.title}</Text>
+            <Text>{todo.completed ? 'Done' : 'Incomplete'}</Text>
+          </View>
+        ))}
+        <Text>These are completed Todos</Text>
+        {store.completedTodos.map((todo, index) => (
+          <View
+            key={index}
+            style={{justifyContent: 'space-around', flexDirection: 'row'}}>
             <Text>{todo.title}</Text>
             <Text>{todo.completed ? 'Done' : 'Incomplete'}</Text>
           </View>
