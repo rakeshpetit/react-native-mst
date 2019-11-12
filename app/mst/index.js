@@ -1,4 +1,5 @@
 import {types} from 'mobx-state-tree';
+import {onPatch, onSnapshot} from 'mobx-state-tree';
 
 const Todo = types
   .model('Todo', {
@@ -51,14 +52,13 @@ const store = TodoStore.create({
     },
   ],
 });
-// store.todos.addTodo('Get milk');
-export default store;
 
-// export default TodoStore.create({
-//   todos: [
-//     {
-//       title: 'Get biscuit',
-//       completed: false,
-//     },
-//   ],
-// });
+onSnapshot(store, newSnapshot => {
+  console.dir('Got new state: ', newSnapshot);
+});
+
+onPatch(store, patch => {
+  console.dir('Got change: ', patch);
+});
+
+export default store;
