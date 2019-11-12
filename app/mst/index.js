@@ -10,8 +10,8 @@ const Todo = types
       setTitle(newTitle) {
         self.title = newTitle;
       },
-      setCompleted() {
-        self.completed = true;
+      toggleCompleted() {
+        self.completed = !self.completed;
       },
     };
   });
